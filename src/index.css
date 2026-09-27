@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@theme {
+  /* Primary */
+  --color-primary: hsl(220 98% 61%);
+
+  /* Check gradient */
+  --color-check-start: hsl(192 100% 67%);
+  --color-check-end: hsl(280 87% 65%);
+
+  /* Light theme colors */
+  --color-background: hsl(0 0% 98%);
+  --color-surface: hsl(0 0% 100%);
+  --color-heading: hsl(235 19% 35%);
+  --color-border: hsl(233 11% 84%);
+  --color-completed: hsl(234 39% 85%);
+
+  /* Typography */
+  --font-josefin: "Josefin Sans", sans-serif;
+}
+
+/* 
+   Dark Theme
+*/
+[data-theme="dark"] {
+  --color-background: hsl(235 21% 11%);
+  --color-surface: hsl(235 24% 19%);
+  --color-text: hsl(236 9% 61%);
+  --color-heading: hsl(234 39% 85%);
+  --color-border: hsl(237 14% 26%);
+  --color-completed: hsl(235 16% 43%);
+}
+
+/* 
+   Global Styles
+   */
+body {
+  font-family: var(--font-josefin);
+  font-size: 1.1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-grayish-blue);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
