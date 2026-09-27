@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/piyush-kaushik24/todo-app)
-- Live Site URL: [Todo app](<>)
+- Live Site URL: [Todo app](https://todo-app-roan-theta-3by172c78p.vercel.app/)
 
 ## My process
 
