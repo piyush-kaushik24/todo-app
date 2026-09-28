@@ -10,6 +10,7 @@ export const Header = ({ theme, onTheme }: HeaderProps) => {
         <a href="#">TODO</a>
       </h1>
       <button
+        aria-label={theme ? "Switch to light theme" : " Switch to Dark theme"}
         type="button"
         onClick={() => onTheme(!theme)}
         className="cursor-pointer"

@@ -51,7 +51,7 @@ export const Todo = () => {
       <TodoLists
         todo={filteredTasks}
         onDelete={handleOnDelete}
-        OnCheck={handleOnCheck}
+        onCheck={handleOnCheck}
         setTodo={setTodo}
       />
       <TasksFilter onFilterTask={handleOnFilter} taskFilter={taskFilter} />

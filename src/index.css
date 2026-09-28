@@ -8,6 +8,7 @@
   --color-check-end: hsl(280 87% 65%);
 
   /* Light theme colors */
+  --color-text: hsl(236 9% 61%);
   --color-background: hsl(0 0% 98%);
   --color-surface: hsl(0 0% 100%);
   --color-heading: hsl(235 19% 35%);

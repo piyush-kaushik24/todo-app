@@ -1,44 +1,54 @@
-import { type SetStateAction } from "react";
+import { useEffect, useRef } from "react";
+
 import type { TodoProps } from "./Todo";
 
 type ConfirmationModelProps = {
-  setTodo: React.Dispatch<SetStateAction<TodoProps[]>>;
   todo: TodoProps[];
-  setConfirmation: React.Dispatch<SetStateAction<boolean>>;
+  onClearCompleted: () => void;
+  onClose: () => void;
 };
+
 export const ConfirmationModel = ({
   todo,
-  setTodo,
-  setConfirmation,
+  onClearCompleted,
+  onClose,
 }: ConfirmationModelProps) => {
-  let completedTasks = todo.filter((task) => task.completed).length;
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  const completedTasks = todo.filter((task) => task.completed).length;
+
+  useEffect(() => {
+    dialogRef.current?.showModal();
+  }, []);
+
   return (
-    <div className="bg-surface border-border absolute top-1/2 left-1/2 z-30 w-[90%] max-w-80 -translate-x-1/2 rounded-xl border-2 -translate-y-1/2">
+    <dialog
+      ref={dialogRef}
+      onClose={onClose}
+      className="bg-surface border-border m-auto w-[90%] max-w-80 rounded-xl border-2 p-0 text-inherit backdrop:bg-black/50"
+    >
       <span className="block p-6 text-center">
         Are you sure u want to delete{" "}
-        <span className="text-primary"> {completedTasks} </span>Completed{" "}
-        <span>{completedTasks > 1 ? "Tasks" : "Task"} ?</span>
+        <span className="text-primary">{completedTasks}</span> Completed{" "}
+        <span>{completedTasks > 1 ? "Tasks" : "Task"}?</span>
       </span>
-      <span className="border-border flex justify-center gap-20 border-t p-6 font-bold">
+
+      <form
+        className="border-border flex justify-center gap-20 border-t p-6 font-bold"
+        method="dialog"
+      >
         <button
-          type="button"
-          onClick={() => {
-            setTodo(todo.filter((task) => !task.completed));
-            setConfirmation(false);
-          }}
+          type="submit"
+          onClick={onClearCompleted}
           className="hover:text-primary duration-500"
         >
           Yes
         </button>
 
-        <button
-          type="button"
-          onClick={() => setConfirmation(false)}
-          className="hover:text-primary  duration-500"
-        >
+        <button type="submit" className="hover:text-primary duration-500">
           Cancel
         </button>
-      </span>
-    </div>
+      </form>
+    </dialog>
   );
 };
